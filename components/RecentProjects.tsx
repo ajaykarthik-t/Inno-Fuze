@@ -64,7 +64,7 @@ const ProjectRegistrationForm = () => {
           Ready to take <span className="text-purple-400">your digital presence</span> to the next level?
         </h1>
         <p className="text-lg text-gray-300 max-w-2xl mx-auto mb-10">
-          Reach out to me today and let's discuss how I can help you achieve your goals.
+          Reach out to me today and let&apos;s discuss how I can help you achieve your goals.
         </p>
       </div>
       
@@ -282,7 +282,7 @@ const ProjectRegistrationForm = () => {
             
             <div className="mb-4">
               <label className="block text-sm font-medium mb-1 text-gray-300">
-                Referrer's Phone Number
+                Referrer&apos;s Phone Number
               </label>
               <input
                 type="tel"
@@ -299,7 +299,7 @@ const ProjectRegistrationForm = () => {
                 type="submit"
                 className="w-full py-4 px-6 bg-gradient-to-r from-purple-700 to-purple-500 hover:from-purple-800 hover:to-purple-600 text-white font-medium rounded-lg transition-all duration-200 flex items-center justify-center"
               >
-                <span>Let's get in touch</span>
+                <span>Let&apos;s get in touch</span>
                 <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                 </svg>

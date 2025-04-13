@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 const ProjectRegistrationForm = () => {
+  // State to manage form data with default values
   const [formData, setFormData] = useState({
     name: "Name",
     collegeName: "Anna University",
@@ -17,6 +18,7 @@ const ProjectRegistrationForm = () => {
     referrerPhone: "9600309140"
   });
 
+  // Handler for input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prevState => ({
@@ -25,6 +27,7 @@ const ProjectRegistrationForm = () => {
     }));
   };
 
+  // Form submission handler
   const handleSubmit = (e) => {
     e.preventDefault();
     
@@ -183,7 +186,7 @@ const ProjectRegistrationForm = () => {
             {/* Bundle Selection */}
             <div className="mb-6">
               <label className="block text-sm font-medium mb-2 text-gray-300">
-                Price for Phase 1 & 2 <span className="text-purple-400">*</span>
+                Price for Phase 1 &amp; 2 <span className="text-purple-400">*</span>
               </label>
               <p className="text-sm text-purple-400 mb-3">
                 Get up to ₹500 discount using referral code
@@ -202,7 +205,7 @@ const ProjectRegistrationForm = () => {
                     required
                   />
                   <label htmlFor="bundle1" className="text-sm text-gray-300">
-                    <span className="font-medium">Bundle 1</span> - Report + PPT + Project + Live Demo & Setup + Tutorial Video + Journal Paper
+                    <span className="font-medium">Bundle 1</span> - Report + PPT + Project + Live Demo &amp; Setup + Tutorial Video + Journal Paper
                   </label>
                 </div>
                 
@@ -217,7 +220,7 @@ const ProjectRegistrationForm = () => {
                     className="mt-1 mr-2"
                   />
                   <label htmlFor="bundle2" className="text-sm text-gray-300">
-                    <span className="font-medium">Bundle 2</span> - Report + PPT + Project + Live Demo & Setup + Tutorial Video
+                    <span className="font-medium">Bundle 2</span> - Report + PPT + Project + Live Demo &amp; Setup + Tutorial Video
                   </label>
                 </div>
                 

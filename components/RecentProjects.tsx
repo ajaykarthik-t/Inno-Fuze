@@ -3,7 +3,6 @@
 import { useState } from "react";
 
 const ProjectRegistrationForm = () => {
-  // Form data state with default values
   const [formData, setFormData] = useState({
     name: "Name",
     collegeName: "Anna University",
@@ -15,27 +14,22 @@ const ProjectRegistrationForm = () => {
     projectTitle: "Any Disease Predictions using AI and ML",
     referredBy: "Ajay",
     referralCode: "AJ500",
-    referrerPhone: "9600309140"
+    referrerPhone: "9600309140",
   });
 
-  // Input change handler
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
       ...prevState,
-      [name]: value
+      [name]: value,
     }));
   };
 
-  // Form submission handler
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     try {
-      // Create URL parameters for Google Form
-      const formParams = new URLSearchParams();
-      
-      // Map form fields to Google Form entry IDs
+      const formParams = new FormData();
       formParams.append("entry.2005620554", formData.name);
       formParams.append("entry.1065046570", formData.collegeName);
       formParams.append("entry.1158397446", formData.department);
@@ -47,12 +41,17 @@ const ProjectRegistrationForm = () => {
       formParams.append("entry.50540533", formData.referredBy);
       formParams.append("entry.1246606210", formData.referralCode);
       formParams.append("entry.973899661", formData.referrerPhone);
-      
-      // Google Form submission URL
-      const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfW5S3Jqfr7exRzEsG-l5abq3RSEH-zq8r_c5ujjx9mdLyRFg/formResponse";
-      
-      // Redirect to submit the form
-      window.location.href = `${googleFormUrl}?${formParams.toString()}`;
+
+      await fetch(
+        "https://docs.google.com/forms/d/e/1FAIpQLSfW5S3Jqfr7exRzEsG-l5abq3RSEH-zq8r_c5ujjx9mdLyRFg/formResponse",
+        {
+          method: "POST",
+          mode: "no-cors",
+          body: formParams,
+        }
+      );
+
+      alert("Form submitted successfully!");
     } catch (error) {
       console.error("Error submitting form:", error);
       alert("There was an error submitting the form. Please try again.");
@@ -61,136 +60,56 @@ const ProjectRegistrationForm = () => {
 
   return (
     <div className="min-h-screen bg-[#040720] text-white">
-      {/* Hero Section */}
       <div className="w-full py-16 px-4 text-center">
         <h1 className="text-4xl md:text-5xl font-bold mb-6">
           Ready to take <span className="text-purple-400">your digital presence</span> to the next level?
         </h1>
         <p className="text-lg text-gray-300 max-w-2xl mx-auto mb-10">
-          Reach out to me today and let&apos;s discuss how I can help you achieve your goals.
+          Reach out to me today and let's discuss how I can help you achieve your goals.
         </p>
       </div>
-      
-      {/* Form Container */}
+
       <div className="max-w-md mx-auto px-4 pb-20">
-        <form 
-          onSubmit={handleSubmit} 
+        <form
+          onSubmit={handleSubmit}
           className="bg-[#060A27] border border-[#1A1E3A] rounded-lg shadow-xl overflow-hidden"
         >
-          {/* Form Header */}
           <div className="bg-gradient-to-r from-purple-900 to-purple-700 p-5">
             <h2 className="text-xl font-bold">Project Registration</h2>
             <p className="text-sm text-purple-200">* Required fields</p>
           </div>
-          
-          {/* Form Fields */}
+
           <div className="p-5 space-y-4">
-            {/* Personal Information */}
-            <div className="mb-4">
-              <label htmlFor="name" className="block text-sm font-medium mb-1 text-gray-300">
-                Name <span className="text-purple-400">*</span>
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                className="w-full p-3 bg-[#0A0F33] border border-[#1A1E3A] rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none"
-                required
-              />
-            </div>
-            
-            <div className="mb-4">
-              <label htmlFor="collegeName" className="block text-sm font-medium mb-1 text-gray-300">
-                College Name <span className="text-purple-400">*</span>
-              </label>
-              <input
-                type="text"
-                id="collegeName"
-                name="collegeName"
-                value={formData.collegeName}
-                onChange={handleChange}
-                className="w-full p-3 bg-[#0A0F33] border border-[#1A1E3A] rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none"
-                required
-              />
-            </div>
-            
-            <div className="mb-4">
-              <label htmlFor="department" className="block text-sm font-medium mb-1 text-gray-300">
-                Department <span className="text-purple-400">*</span>
-              </label>
-              <input
-                type="text"
-                id="department"
-                name="department"
-                value={formData.department}
-                onChange={handleChange}
-                className="w-full p-3 bg-[#0A0F33] border border-[#1A1E3A] rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none"
-                required
-              />
-            </div>
-            
-            <div className="mb-4">
-              <label htmlFor="phoneNumber" className="block text-sm font-medium mb-1 text-gray-300">
-                Phone Number <span className="text-purple-400">*</span>
-              </label>
-              <input
-                type="tel"
-                id="phoneNumber"
-                name="phoneNumber"
-                value={formData.phoneNumber}
-                onChange={handleChange}
-                className="w-full p-3 bg-[#0A0F33] border border-[#1A1E3A] rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none"
-                required
-              />
-            </div>
-            
-            <div className="mb-4">
-              <label htmlFor="domain" className="block text-sm font-medium mb-1 text-gray-300">
-                Domain <span className="text-purple-400">*</span>
-              </label>
-              <input
-                type="text"
-                id="domain"
-                name="domain"
-                value={formData.domain}
-                onChange={handleChange}
-                className="w-full p-3 bg-[#0A0F33] border border-[#1A1E3A] rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none"
-                required
-              />
-            </div>
-            
-            <div className="mb-4">
-              <label htmlFor="programmingLanguage" className="block text-sm font-medium mb-1 text-gray-300">
-                Programming Language <span className="text-purple-400">*</span>
-              </label>
-              <input
-                type="text"
-                id="programmingLanguage"
-                name="programmingLanguage"
-                value={formData.programmingLanguage}
-                onChange={handleChange}
-                className="w-full p-3 bg-[#0A0F33] border border-[#1A1E3A] rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none"
-                required
-              />
-            </div>
-            
-            <div className="mb-4">
-              <label htmlFor="projectTitle" className="block text-sm font-medium mb-1 text-gray-300">
-                Project Title
-              </label>
-              <input
-                type="text"
-                id="projectTitle"
-                name="projectTitle"
-                value={formData.projectTitle}
-                onChange={handleChange}
-                className="w-full p-3 bg-[#0A0F33] border border-[#1A1E3A] rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none"
-              />
-            </div>
-            
-            {/* Bundle Selection */}
+            {[
+              { id: "name", label: "Name" },
+              { id: "collegeName", label: "College Name" },
+              { id: "department", label: "Department" },
+              { id: "phoneNumber", label: "Phone Number", type: "tel" },
+              { id: "domain", label: "Domain" },
+              { id: "programmingLanguage", label: "Programming Language" },
+              { id: "projectTitle", label: "Project Title" },
+              { id: "referredBy", label: "Referred by" },
+              { id: "referralCode", label: "Referral Code" },
+              { id: "referrerPhone", label: "Referrer's Phone Number", type: "tel" },
+            ].map((field) => (
+              <div key={field.id} className="mb-4">
+                <label htmlFor={field.id} className="block text-sm font-medium mb-1 text-gray-300">
+                  {field.label} {(field.id !== "projectTitle" && field.id !== "referredBy" && field.id !== "referralCode" && field.id !== "referrerPhone") && (
+                    <span className="text-purple-400">*</span>
+                  )}
+                </label>
+                <input
+                  type={field.type || "text"}
+                  id={field.id}
+                  name={field.id}
+                  value={formData[field.id]}
+                  onChange={handleChange}
+                  required={!["projectTitle", "referredBy", "referralCode", "referrerPhone"].includes(field.id)}
+                  className="w-full p-3 bg-[#0A0F33] border border-[#1A1E3A] rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none"
+                />
+              </div>
+            ))}
+
             <div className="mb-6">
               <fieldset>
                 <legend className="block text-sm font-medium mb-2 text-gray-300">
@@ -199,128 +118,59 @@ const ProjectRegistrationForm = () => {
                 <p className="text-sm text-purple-400 mb-3">
                   Get up to ₹500 discount using referral code
                 </p>
-                
+
                 <div className="space-y-2 bg-[#0A0F33] p-4 rounded-lg border border-[#1A1E3A]">
-                  <div className="flex items-start">
-                    <input
-                      type="radio"
-                      id="bundle1"
-                      name="priceBundle"
-                      value="Bundle 1"
-                      checked={formData.priceBundle === "Bundle 1"}
-                      onChange={handleChange}
-                      className="mt-1 mr-2"
-                      required
-                    />
-                    <label htmlFor="bundle1" className="text-sm text-gray-300">
-                      <span className="font-medium">Bundle 1</span> - Report + PPT + Project + Live Demo &amp; Setup + Tutorial Video + Journal Paper
-                    </label>
-                  </div>
-                  
-                  <div className="flex items-start">
-                    <input
-                      type="radio"
-                      id="bundle2"
-                      name="priceBundle"
-                      value="Bundle 2"
-                      checked={formData.priceBundle === "Bundle 2"}
-                      onChange={handleChange}
-                      className="mt-1 mr-2"
-                    />
-                    <label htmlFor="bundle2" className="text-sm text-gray-300">
-                      <span className="font-medium">Bundle 2</span> - Report + PPT + Project + Live Demo &amp; Setup + Tutorial Video
-                    </label>
-                  </div>
-                  
-                  <div className="flex items-start">
-                    <input
-                      type="radio"
-                      id="bundle3"
-                      name="priceBundle"
-                      value="Bundle 3"
-                      checked={formData.priceBundle === "Bundle 3"}
-                      onChange={handleChange}
-                      className="mt-1 mr-2"
-                    />
-                    <label htmlFor="bundle3" className="text-sm text-gray-300">
-                      <span className="font-medium">Bundle 3</span> - Report content + Project + Tutorial Video
-                    </label>
-                  </div>
-                  
-                  <div className="flex items-start">
-                    <input
-                      type="radio"
-                      id="bundle4"
-                      name="priceBundle"
-                      value="Bundle 4"
-                      checked={formData.priceBundle === "Bundle 4"}
-                      onChange={handleChange}
-                      className="mt-1 mr-2"
-                    />
-                    <label htmlFor="bundle4" className="text-sm text-gray-300">
-                      <span className="font-medium">Bundle 4</span> - Project + Tutorial Video
-                    </label>
-                  </div>
+                  {["Bundle 1", "Bundle 2", "Bundle 3", "Bundle 4"].map((bundle, index) => (
+                    <div key={index} className="flex items-start">
+                      <input
+                        type="radio"
+                        id={bundle}
+                        name="priceBundle"
+                        value={bundle}
+                        checked={formData.priceBundle === bundle}
+                        onChange={handleChange}
+                        className="mt-1 mr-2"
+                        required
+                      />
+                      <label htmlFor={bundle} className="text-sm text-gray-300">
+                        <span className="font-medium">{bundle}</span> -{" "}
+                        {{
+                          "Bundle 1": "Report + PPT + Project + Live Demo & Setup + Tutorial Video + Journal Paper",
+                          "Bundle 2": "Report + PPT + Project + Live Demo & Setup + Tutorial Video",
+                          "Bundle 3": "Report content + Project + Tutorial Video",
+                          "Bundle 4": "Project + Tutorial Video",
+                        }[bundle]}
+                      </label>
+                    </div>
+                  ))}
                 </div>
               </fieldset>
             </div>
-            
-            {/* Referral Information */}
-            <div className="mb-4">
-              <label htmlFor="referredBy" className="block text-sm font-medium mb-1 text-gray-300">
-                Referred by
-              </label>
-              <input
-                type="text"
-                id="referredBy"
-                name="referredBy"
-                value={formData.referredBy}
-                onChange={handleChange}
-                className="w-full p-3 bg-[#0A0F33] border border-[#1A1E3A] rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none"
-              />
-            </div>
-            
-            <div className="mb-4">
-              <label htmlFor="referralCode" className="block text-sm font-medium mb-1 text-gray-300">
-                Referral Code
-              </label>
-              <input
-                type="text"
-                id="referralCode"
-                name="referralCode"
-                value={formData.referralCode}
-                onChange={handleChange}
-                className="w-full p-3 bg-[#0A0F33] border border-[#1A1E3A] rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none"
-              />
-            </div>
-            
-            <div className="mb-4">
-              <label htmlFor="referrerPhone" className="block text-sm font-medium mb-1 text-gray-300">
-                Referrer&apos;s Phone Number
-              </label>
-              <input
-                type="tel"
-                id="referrerPhone"
-                name="referrerPhone"
-                value={formData.referrerPhone}
-                onChange={handleChange}
-                className="w-full p-3 bg-[#0A0F33] border border-[#1A1E3A] rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none"
-              />
-            </div>
-            
-            {/* Submit Button */}
+
             <div className="mt-8">
               <button
                 type="submit"
                 className="w-full py-4 px-6 bg-gradient-to-r from-purple-700 to-purple-500 hover:from-purple-800 hover:to-purple-600 text-white font-medium rounded-lg transition-all duration-200 flex items-center justify-center"
                 aria-label="Submit form"
               >
-                <span>Let&apos;s get in touch</span>
-                <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                <span>Let's get in touch</span>
+                <svg
+                  className="ml-2 w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  ></path>
                 </svg>
               </button>
-              
+
               <p className="text-xs text-gray-400 text-center mt-4">
                 Never submit passwords through this form
               </p>

@@ -1,9 +1,31 @@
 "use client";
 
-import { useState } from "react";
+import { useState, FormEvent, ChangeEvent } from "react";
+
+// Define a type for the form data
+interface FormData {
+  name: string;
+  collegeName: string;
+  department: string;
+  phoneNumber: string;
+  domain: string;
+  programmingLanguage: string;
+  priceBundle: string;
+  projectTitle: string;
+  referredBy: string;
+  referralCode: string;
+  referrerPhone: string;
+}
+
+// Define a type for the field objects in the array
+interface FieldConfig {
+  id: keyof FormData;
+  label: string;
+  type?: string;
+}
 
 const ProjectRegistrationForm = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: "Name",
     collegeName: "Anna University",
     department: "CSE",
@@ -17,7 +39,7 @@ const ProjectRegistrationForm = () => {
     referrerPhone: "9600309140",
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
       ...prevState,
@@ -25,7 +47,7 @@ const ProjectRegistrationForm = () => {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
@@ -58,6 +80,20 @@ const ProjectRegistrationForm = () => {
     }
   };
 
+  // Define the fields array with proper typing
+  const fields: FieldConfig[] = [
+    { id: "name", label: "Name" },
+    { id: "collegeName", label: "College Name" },
+    { id: "department", label: "Department" },
+    { id: "phoneNumber", label: "Phone Number", type: "tel" },
+    { id: "domain", label: "Domain" },
+    { id: "programmingLanguage", label: "Programming Language" },
+    { id: "projectTitle", label: "Project Title" },
+    { id: "referredBy", label: "Referred by" },
+    { id: "referralCode", label: "Referral Code" },
+    { id: "referrerPhone", label: "Referrer's Phone Number", type: "tel" },
+  ];
+
   return (
     <div className="min-h-screen bg-[#040720] text-white">
       <div className="w-full py-16 px-4 text-center">
@@ -65,7 +101,7 @@ const ProjectRegistrationForm = () => {
           Ready to take <span className="text-purple-400">your digital presence</span> to the next level?
         </h1>
         <p className="text-lg text-gray-300 max-w-2xl mx-auto mb-10">
-          Reach out to me today and let's discuss how I can help you achieve your goals.
+          Reach out to me today and let&apos;s discuss how I can help you achieve your goals.
         </p>
       </div>
 
@@ -80,18 +116,7 @@ const ProjectRegistrationForm = () => {
           </div>
 
           <div className="p-5 space-y-4">
-            {[
-              { id: "name", label: "Name" },
-              { id: "collegeName", label: "College Name" },
-              { id: "department", label: "Department" },
-              { id: "phoneNumber", label: "Phone Number", type: "tel" },
-              { id: "domain", label: "Domain" },
-              { id: "programmingLanguage", label: "Programming Language" },
-              { id: "projectTitle", label: "Project Title" },
-              { id: "referredBy", label: "Referred by" },
-              { id: "referralCode", label: "Referral Code" },
-              { id: "referrerPhone", label: "Referrer's Phone Number", type: "tel" },
-            ].map((field) => (
+            {fields.map((field) => (
               <div key={field.id} className="mb-4">
                 <label htmlFor={field.id} className="block text-sm font-medium mb-1 text-gray-300">
                   {field.label} {(field.id !== "projectTitle" && field.id !== "referredBy" && field.id !== "referralCode" && field.id !== "referrerPhone") && (
@@ -103,7 +128,7 @@ const ProjectRegistrationForm = () => {
                   id={field.id}
                   name={field.id}
                   value={formData[field.id]}
-                  onChange={handleChange}
+                  onChange={handleChange} 
                   required={!["projectTitle", "referredBy", "referralCode", "referrerPhone"].includes(field.id)}
                   className="w-full p-3 bg-[#0A0F33] border border-[#1A1E3A] rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none"
                 />
@@ -153,7 +178,7 @@ const ProjectRegistrationForm = () => {
                 className="w-full py-4 px-6 bg-gradient-to-r from-purple-700 to-purple-500 hover:from-purple-800 hover:to-purple-600 text-white font-medium rounded-lg transition-all duration-200 flex items-center justify-center"
                 aria-label="Submit form"
               >
-                <span>Let's get in touch</span>
+                <span>Let&apos;s get in touch</span>
                 <svg
                   className="ml-2 w-4 h-4"
                   fill="none"

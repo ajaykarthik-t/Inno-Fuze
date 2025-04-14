@@ -29,7 +29,6 @@ export const gridItems = [
   {
     id: 3,
     title: "Tech stacks",
-    // description: "We pro at",
     className: "lg:col-span-2 md:col-span-3 md:row-span-2",
     imgClassName: "",
     titleClassName: "justify-center",
@@ -46,7 +45,6 @@ export const gridItems = [
     img: "/grid.svg",
     spareImg: "/b4.svg",
   },
-
   {
     id: 5,
     title: "Currently building a JS Animation library",
@@ -70,14 +68,6 @@ export const gridItems = [
 ];
 
 export const projects = [
-  // {
-  //   id: 1,
-  //   title: "3D Solar System Planets to Explore",
-  //   des: "Explore the wonders of our solar system with this captivating 3D simulation of the planets using Three.js.",
-  //   img: "/p1.svg",
-  //   iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
-  //   link: "/ui.earth.com",
-  // },
   {
     id: 2,
     title: "Yoom - Video Conferencing App",
@@ -94,111 +84,73 @@ export const projects = [
     iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/c.svg"],
     link: "/ui.aiimg.com",
   },
-  // {
-  //   id: 4,
-  //   title: "Animated Apple Iphone 3D Website",
-  //   des: "Recreated the Apple iPhone 15 Pro website, combining GSAP animations and Three.js 3D effects..",
-  //   img: "/p4.svg",
-  //   iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/gsap.svg"],
-  //   link: "/ui.apple.com",
-  // },
 ];
 
 export const testimonials = [
-  // {
-  //   quote:
-  //     "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-  //   name: "Michael Johnson",
-  //   title: "Director of AlphaStream Technologies",
-  // },
-  // {
-  //   quote:
-  //     "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-  //   name: "Michael Johnson",
-  //   title: "Director of AlphaStream Technologies",
-  // },
-  // {
-  //   quote:
-  //     "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-  //   name: "Michael Johnson",
-  //   title: "Director of AlphaStream Technologies",
-  // },
-  // {
-  //   quote:
-  //     "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-  //   name: "Michael Johnson",
-  //   title: "Director of AlphaStream Technologies",
-  // },
-  // {
-  //   quote:
-  //     "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-  //   name: "Michael Johnson",
-  //   title: "Director of AlphaStream Technologies",
-  // },
 ];
 
 export const companies = [
-  {
-    id: 1,
-    name: "cloudinary",
-    img: "/cloud.svg",
-    nameImg: "/cloudName.svg",
-  },
-  {
-    id: 2,
-    name: "appwrite",
-    img: "/app.svg",
-    nameImg: "/appName.svg",
-  },
-  {
-    id: 3,
-    name: "HOSTINGER",
-    img: "/host.svg",
-    nameImg: "/hostName.svg",
-  },
-  {
-    id: 4,
-    name: "stream",
-    img: "/s.svg",
-    nameImg: "/streamName.svg",
-  },
-  {
-    id: 5,
-    name: "docker.",
-    img: "/dock.svg",
-    nameImg: "/dockerName.svg",
-  },
+  // {
+  //   id: 1,
+  //   name: "cloudinary",
+  //   img: "/cloud.svg",
+  //   nameImg: "/cloudName.svg",
+  // },
+  // {
+  //   id: 2,
+  //   name: "appwrite",
+  //   img: "/app.svg",
+  //   nameImg: "/appName.svg",
+  // },
+  // {
+  //   id: 3,
+  //   name: "HOSTINGER",
+  //   img: "/host.svg",
+  //   nameImg: "/hostName.svg",
+  // },
+  // {
+  //   id: 4,
+  //   name: "stream",
+  //   img: "/s.svg",
+  //   nameImg: "/streamName.svg",
+  // },
+  // {
+  //   id: 5,
+  //   name: "docker.",
+  //   img: "/dock.svg",
+  //   nameImg: "/dockerName.svg",
+  // },
 ];
 
 export const workExperience = [
   {
     id: 1,
-    title: "Software Developer Intern",
-    desc: "Working as a Software Developer Intern at Zino Technologies, Bengaluru, specializing in Go (Golang) and React, and contributing to backend development and innovative solutions.",
+    title: "Machine Learning Projects",
+    desc: "Expertise in developing sophisticated ML models for various applications including computer vision, NLP, and predictive analytics. Our ML projects follow IEEE standards and are built using TensorFlow, PyTorch, and scikit-learn frameworks.",
     className: "md:col-span-2",
     thumbnail: "/exp1.svg",
   },
-  // {
-  //   id: 2,
-  //   title: "Mobile App Dev - JSM Tech",
-  //   desc: "Designed and developed mobile app for both iOS & Android platforms using React Native.",
-  //   className: "md:col-span-2", // change to md:col-span-2
-  //   thumbnail: "/exp2.svg",
-  // },
   {
-    id: 3,
-    title: "Freelance Developer",
-    desc: "Developed over 50 machine learning projects, showcasing expertise in model building, data analysis, and real-world problem-solving. Continuously refining skills through hands-on experience in diverse ML applications",
-    className: "md:col-span-2", // change to md:col-span-2
+    id: 2,
+    title: "Web Development Solutions",
+    desc: "Creating responsive, scalable web applications using modern frameworks like React, Next.js, and Angular. Our web projects focus on performance optimization, accessibility, and innovative UI/UX with clean, maintainable code.",
+    className: "md:col-span-2",
     thumbnail: "/exp3.svg",
   },
-  // {
-  //   id: 4,
-  //   title: "Lead Frontend Developer",
-  //   desc: "Developed and maintained user-facing features using modern frontend technologies.",
-  //   className: "md:col-span-2",
-  //   thumbnail: "/exp4.svg",
-  // },
+  {
+    id: 3,
+    title: "Blockchain Applications",
+    desc: "Building decentralized applications (dApps) using Ethereum, Solidity, and Web3 technologies. Our blockchain solutions include smart contracts, NFT platforms, and secure transaction systems with a focus on security and scalability.",
+    className: "md:col-span-2",
+    thumbnail: "/exp2.svg",
+  },
+  {
+    id: 4,
+    title: "IEEE-Standard Research Projects",
+    desc: "Developing publication-ready projects that meet IEEE standards across domains like IoT, cybersecurity, and AI. Our research projects include comprehensive documentation, methodology validation, and empirical evaluation.",
+    className: "md:col-span-2",
+    thumbnail: "/exp4.svg",
+  },
 ];
 
 export const socialMedia = [

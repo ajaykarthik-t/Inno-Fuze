@@ -1,6 +1,21 @@
 "use client";
 
 import { useState, FormEvent, ChangeEvent } from "react";
+import { FaGraduationCap } from "react-icons/fa6";
+import MagicButton from "./MagicButton";
+
+// Add this to your globals.css or a new CSS file
+// @keyframes spin-slow {
+//   from {
+//     transform: rotate(0deg);
+//   }
+//   to {
+//     transform: rotate(360deg);
+//   }
+// }
+// .animate-spin-slow {
+//   animation: spin-slow 10s linear infinite;
+// }
 
 // Define a type for the form data
 interface FormData {
@@ -26,17 +41,17 @@ interface FieldConfig {
 
 const ProjectRegistrationForm = () => {
   const [formData, setFormData] = useState<FormData>({
-    name: "Name",
-    collegeName: "Anna University",
-    department: "CSE",
-    phoneNumber: "9876543210",
+    name: "",
+    collegeName: "",
+    department: "",
+    phoneNumber: "",
     domain: "Machine Learning",
     programmingLanguage: "Python",
     priceBundle: "Bundle 1",
-    projectTitle: "Any Disease Predictions using AI and ML",
-    referredBy: "Ajay",
-    referralCode: "AJ500",
-    referrerPhone: "9600309140",
+    projectTitle: "",
+    referredBy: "Ajay", // Pre-filled with Ajay
+    referralCode: "AJ500", // Pre-filled with AJ500
+    referrerPhone: "",
   });
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -96,13 +111,13 @@ const ProjectRegistrationForm = () => {
 
   return (
     <div className="min-h-screen bg-[#040720] text-white">
-      <div className="w-full py-16 px-4 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold mb-6">
-          Ready to take <span className="text-purple-400">your digital presence</span> to the next level?
-        </h1>
-        <p className="text-lg text-gray-300 max-w-2xl mx-auto mb-10">
-          Reach out to me today and let&apos;s discuss how I can help you achieve your goals.
-        </p>
+      <div className="w-full py-16 px-4 text-center bg-gradient-to-b from-[#060a30] to-[#040720]">
+    <h1 className="text-4xl md:text-5xl font-bold mb-6">
+  <span className="text-purple-400">Transform Your Ideas</span> Into Standout Projects
+</h1>
+<p className="text-lg text-gray-300 max-w-2xl mx-auto mb-10">
+  Share your project requirements with us and take the first step toward creating an innovative, industry-recognized final year project that showcases your skills
+</p>
       </div>
 
       <div className="max-w-md mx-auto px-4 pb-20">
@@ -131,17 +146,22 @@ const ProjectRegistrationForm = () => {
                   onChange={handleChange} 
                   required={!["projectTitle", "referredBy", "referralCode", "referrerPhone"].includes(field.id)}
                   className="w-full p-3 bg-[#0A0F33] border border-[#1A1E3A] rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none"
+                  placeholder={field.label}
+                  readOnly={field.id === "referredBy" || field.id === "referralCode"} // Make referral fields read-only
                 />
+                {(field.id === "referredBy" || field.id === "referralCode") && (
+                  <p className="text-xs text-purple-400 mt-1">Pre-filled referral information</p>
+                )}
               </div>
             ))}
 
             <div className="mb-6">
               <fieldset>
                 <legend className="block text-sm font-medium mb-2 text-gray-300">
-                  Price for Phase 1 &amp; 2 <span className="text-purple-400">*</span>
+                  Project Packages <span className="text-purple-400">*</span>
                 </legend>
                 <p className="text-sm text-purple-400 mb-3">
-                  Get up to ₹500 discount using referral code
+                  Choose the package that fits your needs
                 </p>
 
                 <div className="space-y-2 bg-[#0A0F33] p-4 rounded-lg border border-[#1A1E3A]">
@@ -173,31 +193,15 @@ const ProjectRegistrationForm = () => {
             </div>
 
             <div className="mt-8">
-              <button
+              <MagicButton
+                title="Start Your Final Year Project"
+                icon={<FaGraduationCap className="text-lg" />}
+                position="right"
                 type="submit"
-                className="w-full py-4 px-6 bg-gradient-to-r from-purple-700 to-purple-500 hover:from-purple-800 hover:to-purple-600 text-white font-medium rounded-lg transition-all duration-200 flex items-center justify-center"
-                aria-label="Submit form"
-              >
-                <span>Let&apos;s get in touch</span>
-                <svg
-                  className="ml-2 w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M14 5l7 7m0 0l-7 7m7-7H3"
-                  ></path>
-                </svg>
-              </button>
+              />
 
               <p className="text-xs text-gray-400 text-center mt-4">
-                Never submit passwords through this form
+                You can modify your project details anytime
               </p>
             </div>
           </div>

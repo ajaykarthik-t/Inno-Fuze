@@ -17,7 +17,7 @@ const Home = () => {
         <FloatingNav navItems={navItems} />
         <Hero />
         <Grid />
-        <RecentProjects />
+        <RecentProjects id="enquire" />
         <Experience />
         <Approach />
         <Footer />

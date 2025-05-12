@@ -4,19 +4,6 @@ import { useState, FormEvent, ChangeEvent } from "react";
 import { FaGraduationCap } from "react-icons/fa6";
 import MagicButton from "./MagicButton";
 
-// Add this to your globals.css or a new CSS file
-// @keyframes spin-slow {
-//   from {
-//     transform: rotate(0deg);
-//   }
-//   to {
-//     transform: rotate(360deg);
-//   }
-// }
-// .animate-spin-slow {
-//   animation: spin-slow 10s linear infinite;
-// }
-
 // Define a type for the form data
 interface FormData {
   name: string;
@@ -39,7 +26,11 @@ interface FieldConfig {
   type?: string;
 }
 
-const ProjectRegistrationForm = () => {
+interface ProjectRegistrationFormProps {
+  id?: string;
+}
+
+const ProjectRegistrationForm: React.FC<ProjectRegistrationFormProps> = ({ id }) => {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     collegeName: "",
@@ -110,14 +101,14 @@ const ProjectRegistrationForm = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#040720] text-white">
+    <div id={id} className="min-h-screen bg-[#040720] text-white">
       <div className="w-full py-16 px-4 text-center bg-gradient-to-b from-[#060a30] to-[#040720]">
-    <h1 className="text-4xl md:text-5xl font-bold mb-6">
-  <span className="text-purple-400">Transform Your Ideas</span> Into Standout Projects
-</h1>
-<p className="text-lg text-gray-300 max-w-2xl mx-auto mb-10">
-  Share your project requirements with us and take the first step toward creating an innovative, industry-recognized final year project that showcases your skills
-</p>
+        <h1 className="text-4xl md:text-5xl font-bold mb-6">
+          <span className="text-purple-400">Transform Your Ideas</span> Into Standout Projects
+        </h1>
+        <p className="text-lg text-gray-300 max-w-2xl mx-auto mb-10">
+          Share your project requirements with us and take the first step toward creating an innovative, industry-recognized final year project that showcases your skills
+        </p>
       </div>
 
       <div className="max-w-md mx-auto px-4 pb-20">
